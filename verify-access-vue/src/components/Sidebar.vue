@@ -16,19 +16,23 @@
           text-center
           font-bold
           text-xl
+          w-64
           border-solid border-b-4 border-gray-900
           py-8
         "
       >
-        Verify Access at {{ facilityName }}
+        Verify Access at<br />
+        {{ facilityName }}
       </div>
-      <SidebarItem
-        v-for="sideBarItem in sideBarItems"
-        :key="sideBarItem.pageName"
-        :pageName="sideBarItem.pageName"
-        :pageLink="sideBarItem.pageLink"
-        class="mx-auto my-2"
-      />
+      <div class="pt-2 w-64">
+        <SidebarItem
+          v-for="sideBarItem in sideBarItems"
+          :key="sideBarItem.pageName"
+          :pageName="sideBarItem.pageName"
+          :pageLink="sideBarItem.pageLink"
+          class="mx-auto my-2"
+        />
+      </div>
     </div>
   </div>
 </template>

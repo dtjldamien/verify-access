@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-row">
     <Sidebar :facilityName="facilityName" :sideBarItems="sideBarItems" />
-    <router-view />
+    <router-view class="w-full" />
   </div>
 </template>
 
