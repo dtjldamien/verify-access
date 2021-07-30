@@ -1,6 +1,6 @@
 <template>
   <div>
-      <p>{{ name }}</p>
+    <router-link :to="getURL(pageLink)">{{ pageName }}</router-link>
   </div>
 </template>
 
@@ -8,9 +8,19 @@
 export default {
   name: "SidebarItem",
   props: {
-    name: String,
+    pageName: { type: String, default: "Check In Visitor" },
+    pageLink: { type: String, default: "/" },
+  },
+  methods: {
+    getURL(pageLink) {
+      return pageLink;
+    },
   },
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.router-link-active {
+  color: red;
+}
+</style>

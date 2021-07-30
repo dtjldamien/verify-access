@@ -1,20 +1,34 @@
 <template>
   <div
-    class="border-solid border-r-4 border-gray-900 duration-700 overflow-hidden flex justify-center w-64 h-screen"
+    class="
+      border-solid border-r-4 border-gray-900
+      duration-700
+      overflow-hidden
+      flex
+      justify-center
+      w-64
+      h-screen
+    "
   >
     <div class="flex flex-col items-start content-start">
       <div
-        class="text-center font-bold text-xl border-solid border-b-4 border-gray-900	py-8"
+        class="
+          text-center
+          font-bold
+          text-xl
+          border-solid border-b-4 border-gray-900
+          py-8
+        "
       >
         Verify Access at {{ facilityName }}
       </div>
-      <div
+      <SidebarItem
         v-for="sideBarItem in sideBarItems"
-        :key="sideBarItem.name"
+        :key="sideBarItem.pageName"
+        :pageName="sideBarItem.pageName"
+        :pageLink="sideBarItem.pageLink"
         class="mx-auto my-2"
-      >
-        <SidebarItem :name="sideBarItem.name" />
-      </div>
+      />
     </div>
   </div>
 </template>

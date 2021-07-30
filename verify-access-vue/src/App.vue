@@ -1,6 +1,7 @@
 <template>
-  <div class="container">
+  <div class="flex flex-row">
     <Sidebar :facilityName="facilityName" :sideBarItems="sideBarItems" />
+    <router-view />
   </div>
 </template>
 
@@ -10,18 +11,21 @@ import Sidebar from "./components/Sidebar";
 export default {
   name: "App",
   components: { Sidebar },
-  data: function() {
+  data: function () {
     return {
       facilityName: "Maple Building",
       sideBarItems: [
         {
-          name: "Check In Visitor",
+          pageName: "Check In Visitor",
+          pageLink: "/",
         },
         {
-          name: "View List of Current Visitors",
+          pageName: "View List of Current Visitors",
+          pageLink: "/current-visitors",
         },
         {
-          name: "View Visitor History",
+          pageName: "View Visitor History",
+          pageLink: "/visitor-history",
         },
       ],
     };
@@ -29,6 +33,25 @@ export default {
 };
 </script>
 
-<style>
-@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&display=swap");
+<style lang="scss">
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+}
+
+#nav {
+  padding: 30px;
+
+  a {
+    font-weight: bold;
+    color: #2c3e50;
+
+    &.router-link-exact-active {
+      color: #42b983;
+    }
+  }
+}
 </style>
