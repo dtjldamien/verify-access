@@ -6,6 +6,7 @@ const cors = require("cors");
 const morgan = require("morgan");
 const bodyParser = require("body-parser");
 const visitorRecordRoutes = require("./routes/visitorRecords");
+const myInfoRoutes = require("./routes/myInfo");
 
 app.use(cors());
 app.use(morgan("tiny"));
@@ -23,8 +24,8 @@ mongoose
 
 app.use("/api/visitor-records", visitorRecordRoutes);
 
-app.get("/", (req, res) => res.send("Hello World!"));
+app.use("/api/my-info", myInfoRoutes);
 
 app.listen(PORT, () =>
-  console.log(`App listening at http://localhost:${PORT}`)
+  console.log(`Verify Access backend listening at http://localhost:${PORT}`)
 );

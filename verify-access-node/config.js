@@ -43,7 +43,7 @@ let MYINFO_CONNECTOR_CONFIG = {
 
 MONGO_URI = process.env.MONGO_URI;
 PORT = process.env.PORT;
-console.log(this.MONGO_URI);
+
 module.exports.APP_CONFIG = APP_CONFIG;
 module.exports.MYINFO_CONNECTOR_CONFIG = MYINFO_CONNECTOR_CONFIG;
 module.exports.PORT = PORT;

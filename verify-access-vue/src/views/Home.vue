@@ -6,7 +6,7 @@
     <div class="mt-8 justify-center">
       <vue-qrcode
         class="justify-center items-center"
-        :value="generateValue()"
+        :value="qrCodeValue"
         :options="{ width: 400 }"
       ></vue-qrcode>
     </div>
@@ -14,6 +14,7 @@
 </template>
 
 <script>
+import axios from "axios";
 import VueQrcode from "@chenfengyuan/vue-qrcode";
 
 export default {
@@ -24,6 +25,8 @@ export default {
   data: function () {
     return {
       facilityName: "Maple Building",
+      qrCodeValue: "test",
+      visitorRecords: [],
       sideBarItems: [
         {
           pageName: "Check In Visitor",
@@ -40,10 +43,13 @@ export default {
       ],
     };
   },
-  methods: {
-    generateValue() {
-      return "test";
-    },
+  async mounted() {
+    const response = await axios.get("api/my-info/generate-qrcode", {
+      headers: {
+        state: this.facilityName,
+      },
+    });
+    this.visitorRecords = response.data;
   },
 };
 </script>
