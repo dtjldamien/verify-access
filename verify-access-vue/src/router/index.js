@@ -8,6 +8,11 @@ const routes = [
     component: Home,
   },
   {
+    path: "/entry-form",
+    name: "EntryForm",
+    component: () => import("../views/EntryForm.vue"),
+  },
+  {
     path: "/current-visitors",
     name: "CurrentVisitors",
     component: () => import("../views/CurrentVisitors.vue"),

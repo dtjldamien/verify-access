@@ -20,6 +20,10 @@ export default {
           pageLink: "/",
         },
         {
+          pageName: "Fill Visitor Entry Form",
+          pageLink: "/entry-form",
+        },
+        {
           pageName: "View List of Current Visitors",
           pageLink: "/current-visitors",
         },
