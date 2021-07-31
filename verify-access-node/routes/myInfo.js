@@ -65,12 +65,12 @@ router.get("/generate-qrcode", function (req, res) {
     );
 });
 
-app.get("/qrcode", function (req, res) {
+router.get("/qrcode", function (req, res) {
   res.send(qrCodeURL);
 });
 
 //mock function to restart the application to facilitate smoother testing
-router.get("/restartApplication", function (req, res) {
+router.get("/restart-application", function (req, res) {
   res.sendStatus(200);
   sse.send(true, "restartApplication");
 });

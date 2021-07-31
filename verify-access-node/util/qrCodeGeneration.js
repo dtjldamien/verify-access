@@ -2,7 +2,6 @@ const fs = require("fs");
 const crypto = require("crypto");
 const config = require("../config");
 const privateKeyController = require("./privateKeyController.js");
-var colors = require("colors");
 
 exports.generateQRCode = function (
   qrType,
