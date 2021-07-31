@@ -10,23 +10,25 @@
         :options="{ width: 400 }"
       ></vue-qrcode>
     </div>
+    <SingPass />
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import VueQrcode from "@chenfengyuan/vue-qrcode";
+import SingPass from "../components/SingPass";
 
 export default {
   name: "Home",
   components: {
     VueQrcode,
+    SingPass,
   },
   data: function () {
     return {
       facilityName: "Maple Building",
       qrCodeValue: "test",
-      visitorRecords: [],
       sideBarItems: [
         {
           pageName: "Check In Visitor",
@@ -43,13 +45,18 @@ export default {
       ],
     };
   },
-  async mounted() {
-    const response = await axios.get("api/my-info/generate-qrcode", {
-      headers: {
-        state: this.facilityName,
-      },
-    });
-    this.visitorRecords = response.data;
+  created() {
+    axios
+      .get("api/my-info/generate-qrcode", {
+        headers: {
+          state: this.facilityName.replace(/\s/g, "+"),
+        },
+      })
+      .then((response) => (this.qrCodeValue = response.data))
+      .catch((error) => {
+        this.errorMessage = error.message;
+        console.error("There was an error!", error);
+      });
   },
 };
 </script>

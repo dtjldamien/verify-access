@@ -53,17 +53,24 @@ export default {
       buttonText: "Check Out",
     };
   },
-  async mounted() {
-    const response = await axios.get("api/visitor-records");
-    this.visitorRecords = response.data;
+  mounted() {
+    axios
+      .get("api/visitor-records")
+      .then((response) => (this.visitorRecords = response.data))
+      .catch((error) => {
+        this.errorMessage = error.message;
+        console.error("There was an error!", error);
+      });
   },
   methods: {
-    async checkOutVisitor(visitorRecord) {
-      const response = await axios.patch(
-        "api/visitor-records/" + visitorRecord._id
-      );
-      console.log(response);
-      visitorRecord.exitTime = response.data.exitTime;
+    checkOutVisitor(visitorRecord) {
+      axios
+        .patch("api/visitor-records/" + visitorRecord._id)
+        .then((response) => (visitorRecord.exitTime = response.data.exitTime))
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
     },
   },
 };

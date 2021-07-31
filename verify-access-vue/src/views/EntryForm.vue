@@ -67,15 +67,21 @@ export default {
     };
   },
   methods: {
-    async checkInVisitor() {
-      await axios.post("api/visitor-records", {
-        visitorName: this.visitorName,
-        maskedId: this.maskedId,
-        vehiclePlate: this.vehiclePlate,
-        visitingUnit: this.visitingUnit,
-        purposeOfVisit: this.purposeOfVisit,
-        accessPass: this.accessPass,
-      });
+    checkInVisitor() {
+      axios
+        .post("api/visitor-records", {
+          visitorName: this.visitorName,
+          maskedId: this.maskedId,
+          vehiclePlate: this.vehiclePlate,
+          visitingUnit: this.visitingUnit,
+          purposeOfVisit: this.purposeOfVisit,
+          accessPass: this.accessPass,
+        })
+        .then((response) => (this.articleId = response.data.id))
+        .catch((error) => {
+          this.errorMessage = error.message;
+          console.error("There was an error!", error);
+        });
     },
   },
 };
