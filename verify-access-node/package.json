@@ -1,0 +1,25 @@
+{
+  "name": "verify-access-backend",
+  "version": "1.0.0",
+  "description": "Node.js backend supporting Verify Access",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "colors": "^1.4.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-sse": "0.5.1",
+    "moment": "^2.29.1",
+    "mongoose": "^5.13.5",
+    "morgan": "^1.10.0",
+    "myinfo-connector-nodejs": "^0.0.8",
+    "node-jose": "^2.0.0",
+    "nodemon": "^2.0.12",
+    "pem": "^1.14.4"
+  },
+  "author": "Damien Tan <dtjldamien@gmail.com>",
+  "license": "ISC"
+}

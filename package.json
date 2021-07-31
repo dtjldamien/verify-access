@@ -1,0 +1,16 @@
+{
+  "name": "verify-access",
+  "version": "1.0.0",
+  "description": "Verify Access",
+  "scripts": {
+    "start": "concurrently \"yarn start:verify-access-node\" \"yarn start:verify-access-vue\"",
+    "start:verify-access-node": "cd verify-access-node && yarn start",
+    "start:verify-access-vue": "cd verify-access-vue && yarn serve"
+  },
+  "dependencies": {
+    "concurrently": "^6.2.0",
+    "dotenv": "^10.0.0"
+  },
+  "author": "Damien Tan <dtjldamien@gmail.com>",
+  "license": "ISC"
+}
