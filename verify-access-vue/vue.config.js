@@ -5,14 +5,14 @@ module.exports = {
         "^/api": {
           target: process.env.VUE_APP_DEV_SERVER_TARGET,
           changeOrigin: true,
+          secure: false,
+          logLevel: "debug",
         },
-        "^/mock-verify": {
+        "^/singpass": {
           target: process.env.VUE_APP_MOCK_VERIFY_TARGET,
           changeOrigin: true,
-        },
-        "^/my-info-sandbox": {
-          target: "https://sandbox.api.myinfo.gov.sg",
-          changeOrigin: true,
+          secure: false,
+          logLevel: "debug",
         },
       },
     },

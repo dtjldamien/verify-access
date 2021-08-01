@@ -13,8 +13,7 @@
     "start:mock-verify": "cd mock-verify && yarn start"
   },
   "dependencies": {
-    "concurrently": "^6.2.0",
-    "dotenv": "^10.0.0"
+    "concurrently": "^6.2.0"
   },
   "author": "Damien Tan <dtjldamien@gmail.com>",
   "license": "ISC"

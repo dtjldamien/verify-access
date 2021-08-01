@@ -17,14 +17,11 @@ Check out the [Google Slides Deck](https://docs.google.com/presentation/d/1XC10N
 - Azure - Cloud environment
 
 ## Installation
-Verify Access requires [Python 3](https://www.python.org/), [pipenv](https://pypi.org/project/pipenv/), [Node.js](https://nodejs.org/en/) to run.
+Verify Access requires [Node.js](https://nodejs.org/en/) to run.
 
-1. Run Django
+1. Install required node modules
 ```sh
-cd verify-access-django
-pipenv shell
-python manage.py migrate
-python manage.py runserver
+yarn add
 ```
 
 2. Run Vue.js
