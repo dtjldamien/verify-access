@@ -10,6 +10,7 @@ const routes = [
   {
     path: "/entry-form",
     name: "EntryForm",
+    props: true,
     component: () => import("../views/EntryForm.vue"),
   },
   {

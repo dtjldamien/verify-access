@@ -7,7 +7,7 @@
         type="text"
         id="visitorName"
         name="visitorName"
-        v-model="visitorName"
+        :value="visitorName"
         readonly
       /><br />
       <label for="maskedId">ID:</label><br />
@@ -15,7 +15,15 @@
         type="text"
         id="maskedId"
         name="maskedId"
-        v-model="maskedId"
+        :value="maskedId"
+        readonly
+      /><br />
+      <label for="mobileNo">Mobile Number:</label><br />
+      <input
+        type="text"
+        id="mobileNo"
+        name="mobileNo"
+        :value="mobileNo"
         readonly
       /><br />
       <label for="vehiclePlate">Vehicle Plate:</label><br />
@@ -23,7 +31,7 @@
         type="text"
         id="vehiclePlate"
         name="vehiclePlate"
-        v-model="vehiclePlate"
+        :value="vehiclePlate"
       /><br />
       <label for="visitingUnit">Visiting Unit:</label><br />
       <input
@@ -56,11 +64,26 @@ import axios from "axios";
 
 export default {
   name: "EntryForm",
+  props: {
+    visitorName: {
+      type: String,
+      default: "CHENG MEI QIN",
+    },
+    maskedId: {
+      type: String,
+      default: "365F",
+    },
+    mobileNumber: {
+      type: String,
+      default: "94891038",
+    },
+    vehiclePlate: {
+      type: String,
+      default: "SLN584U",
+    },
+  },
   data: function () {
     return {
-      visitorName: "default",
-      maskedId: "default",
-      vehiclePlate: "default",
       visitingUnit: "default",
       purposeOfVisit: "default",
       accessPass: "default",
@@ -82,6 +105,9 @@ export default {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
         });
+      this.$router.push({
+        path: "/current-visitors",
+      });
     },
   },
 };
