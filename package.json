@@ -3,17 +3,13 @@
   "version": "1.0.0",
   "description": "Verify Access",
   "scripts": {
-    "setup": "concurrently \"npm run install:verify-access-node\" \"npm run install:verify-access-vue\"",
+    "setup": "npm run install:verify-access-node && npm run install:verify-access-vue",
     "install:verify-access-node": "cd verify-access-node && npm install -f",
     "install:verify-access-vue": "cd verify-access-vue && npm install -f",
-    "build": "npm run build:verify-access-vue && mv verify-access-vue/dist verify-access-node/views",
+    "build": "npm run build:verify-access-vue && cp -rlf verify-access-vue/dist verify-access-node/views",
     "build:verify-access-vue": "cd verify-access-vue && npm run build",
-    "start": "concurrently \"npm run start:verify-access-node\"",
-    "start:verify-access-node": "cd verify-access-node && npm start",
-    "start:verify-access-vue": "cd verify-access-vue && npm run serve"
-  },
-  "dependencies": {
-    "concurrently": "^6.2.0"
+    "start": "npm run start:verify-access-node",
+    "start:verify-access-node": "cd verify-access-node && npm start"
   },
   "author": "Damien Tan <dtjldamien@gmail.com>",
   "license": "ISC"
