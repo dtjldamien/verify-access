@@ -9,6 +9,10 @@ const VisitorRecordSchema = new Schema({
     type: String,
     required: true,
   },
+  mobileNo: {
+    type: String,
+    required: true,
+  },
   vehiclePlate: {
     type: String,
     required: false,
@@ -28,13 +32,12 @@ const VisitorRecordSchema = new Schema({
   },
   entryTime: {
     type: Date,
-    default: Date.now(),
   },
   exitTime: {
     type: Date,
   },
 });
 
-const visitorRecord = model('visitorRecord', VisitorRecordSchema)
+const visitorRecord = model("visitorRecord", VisitorRecordSchema);
 
-module.exports = visitorRecord
+module.exports = visitorRecord;

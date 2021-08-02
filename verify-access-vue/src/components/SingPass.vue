@@ -1,16 +1,23 @@
 <template>
   <div class="singpass">
-    <h1>singpass</h1>
-    <select v-model="selectedPersona">
+    <h1 class="text-5xl mb-4">SingPass</h1>
+    <select
+      class="h-12 border-solid border-2 border-black"
+      v-model="selectedPersona"
+    >
       <option
         v-for="persona in personas"
         :key="persona.uinfin"
-        v-bind:value="persona.uinfin"
+        v-bind:value="persona"
       >
         {{ persona.name }}
       </option>
     </select>
-    <Button :text="buttonText" v-on:click="scanQr(selectedPersona)"></Button>
+    <Button
+      class="mx-2"
+      :text="buttonText"
+      v-on:click="scanQr(selectedPersona)"
+    ></Button>
   </div>
 </template>
 
@@ -46,10 +53,13 @@ export default {
       this.$router.push({
         name: "EntryForm",
         params: {
-          visitorName: "CHENG MEI QIN",
-          maskedId: "365F",
-          mobileNo: "94891038",
-          vehiclePlate: "SLN584U",
+          visitorName: selectedPersona.name,
+          maskedId: selectedPersona.value.partialuinfin.value,
+          mobileNo: selectedPersona.value.mobileno.nbr.value,
+          vehiclePlate:
+            selectedPersona.value.vehicles.length > 0
+              ? selectedPersona.value.vehicles[0].vehicleno.value
+              : "",
         },
       });
     },

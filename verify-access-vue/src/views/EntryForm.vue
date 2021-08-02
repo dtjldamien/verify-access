@@ -1,7 +1,7 @@
 <template>
   <div class="current-visitors">
-    <h1>entry form page</h1>
-    <form>
+    <h1 class="text-center font-bold text-5xl mt-8">Visitor Entry Form</h1>
+    <form class="mt-8">
       <label for="visitorName">Visitor Name:</label><br />
       <input
         type="text"
@@ -39,6 +39,7 @@
         id="visitingUnit"
         name="visitingUnit"
         v-model="visitingUnit"
+        required
       /><br />
       <label for="purposeOfVisit">Purpose of Visit:</label><br />
       <input
@@ -46,6 +47,7 @@
         id="purposeOfVisit"
         name="purposeOfVisit"
         v-model="purposeOfVisit"
+        required
       /><br />
       <label for="accessPass">Access Pass:</label><br />
       <input
@@ -54,7 +56,22 @@
         name="accessPass"
         v-model="accessPass"
       /><br />
-      <input type="submit" value="Submit" v-on:click="checkInVisitor" />
+      <input
+        class="
+          text-base
+          font-semibold
+          rounded-3xl
+          px-8
+          py-3
+          bg-blue-900
+          hover:bg-green-900
+          text-white
+          border-0
+        "
+        type="submit"
+        value="Submit"
+        v-on:click="checkInVisitor"
+      />
     </form>
   </div>
 </template>
@@ -67,26 +84,22 @@ export default {
   props: {
     visitorName: {
       type: String,
-      default: "CHENG MEI QIN",
     },
     maskedId: {
       type: String,
-      default: "365F",
     },
-    mobileNumber: {
+    mobileNo: {
       type: String,
-      default: "94891038",
     },
     vehiclePlate: {
       type: String,
-      default: "SLN584U",
     },
   },
   data: function () {
     return {
-      visitingUnit: "default",
-      purposeOfVisit: "default",
-      accessPass: "default",
+      visitingUnit: "",
+      purposeOfVisit: "",
+      accessPass: "",
     };
   },
   methods: {
@@ -95,20 +108,46 @@ export default {
         .post("api/visitor-records", {
           visitorName: this.visitorName,
           maskedId: this.maskedId,
+          mobileNo: this.mobileNo,
           vehiclePlate: this.vehiclePlate,
           visitingUnit: this.visitingUnit,
           purposeOfVisit: this.purposeOfVisit,
           accessPass: this.accessPass,
+          entryTime: Date.now(),
         })
-        .then((response) => (this.articleId = response.data.id))
+        .then(
+          this.$router.push({
+            path: "/current-visitors",
+          })
+        )
         .catch((error) => {
           this.errorMessage = error.message;
           console.error("There was an error!", error);
         });
-      this.$router.push({
-        path: "/current-visitors",
-      });
     },
   },
 };
 </script>
+
+<style scoped>
+label {
+  text-align: left;
+}
+
+input {
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+}
+
+.required {
+  content: " *";
+  color: red;
+}
+
+input[type="text"]:read-only {
+  cursor: normal;
+  background-color: #f8f8f8;
+  color: #999;
+}
+</style>

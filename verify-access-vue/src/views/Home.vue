@@ -3,14 +3,12 @@
     <h1 class="text-center font-bold text-5xl">
       Welcome to {{ facilityName }}
     </h1>
-    <div class="mt-8 justify-center">
-      <vue-qrcode
-        class="justify-center items-center"
-        :value="qrCodeValue"
-        :options="{ width: 400 }"
-      ></vue-qrcode>
-    </div>
-    <SingPass />
+    <vue-qrcode
+      class="mt-8 mx-auto"
+      :value="qrCodeValue"
+      :options="{ width: 400 }"
+    ></vue-qrcode>
+    <SingPass class="mt-40" />
   </div>
 </template>
 

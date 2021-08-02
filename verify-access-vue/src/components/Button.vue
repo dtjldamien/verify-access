@@ -4,7 +4,7 @@
       text-base
       font-semibold
       rounded-3xl
-      px-8.5
+      px-8
       py-3
       bg-blue-900
       hover:bg-green-900

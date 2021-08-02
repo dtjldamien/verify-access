@@ -5,6 +5,21 @@ const router = Router();
 
 router.get("", async (req, res) => {
   try {
+    const visitorRecords = await VisitorRecord.find({
+      exitTime: { $exists: false },
+    });
+    if (!visitorRecords) throw new Error("No Visitor Records!");
+    const sorted = visitorRecords.sort((a, b) => {
+      return new Date(a.entryTime).getTime() - new Date(b.entryTime).getTime();
+    });
+    res.status(200).json(sorted);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+});
+
+router.get("/history", async (req, res) => {
+  try {
     const visitorRecords = await VisitorRecord.find();
     if (!visitorRecords) throw new Error("No Visitor Records!");
     const sorted = visitorRecords.sort((a, b) => {
