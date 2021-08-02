@@ -23,15 +23,14 @@
         type="text"
         id="mobileNo"
         name="mobileNo"
-        :value="mobileNo"
-        readonly
+        v-model="updatedMobileNo"
       /><br />
       <label for="vehiclePlate">Vehicle Plate:</label><br />
       <input
         type="text"
         id="vehiclePlate"
         name="vehiclePlate"
-        :value="vehiclePlate"
+        v-model="updatedVehiclePlate"
       /><br />
       <label for="visitingUnit">Visiting Unit:</label><br />
       <input
@@ -97,6 +96,8 @@ export default {
   },
   data: function () {
     return {
+      updatedMobileNo: this.mobileNo,
+      updatedVehiclePlate: this.vehiclePlate,
       visitingUnit: "",
       purposeOfVisit: "",
       accessPass: "",
@@ -108,8 +109,8 @@ export default {
         .post("api/visitor-records", {
           visitorName: this.visitorName,
           maskedId: this.maskedId,
-          mobileNo: this.mobileNo,
-          vehiclePlate: this.vehiclePlate,
+          mobileNo: this.updatedMobileNo,
+          vehiclePlate: this.updatedVehiclePlate,
           visitingUnit: this.visitingUnit,
           purposeOfVisit: this.purposeOfVisit,
           accessPass: this.accessPass,
