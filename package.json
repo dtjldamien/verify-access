@@ -3,14 +3,14 @@
   "version": "1.0.0",
   "description": "Verify Access",
   "scripts": {
-    "install": "concurrently \"yarn install:verify-access-node\" \"yarn install:verify-access-vue\" \"yarn install:mock-verify\"",
-    "install:verify-access-node": "cd verify-access-node && yarn",
-    "install:verify-access-vue": "cd verify-access-vue && yarn",
-    "install:mock-verify": "cd mock-verify && yarn",
-    "start": "concurrently \"yarn start:verify-access-node\" \"yarn start:verify-access-vue\" \"yarn start:mock-verify\"",
-    "start:verify-access-node": "cd verify-access-node && yarn start",
-    "start:verify-access-vue": "cd verify-access-vue && yarn serve",
-    "start:mock-verify": "cd mock-verify && yarn start"
+    "setup": "concurrently \"npm run install:verify-access-node\" \"npm run install:verify-access-vue\" \"npm run install:mock-verify\"",
+    "install:verify-access-node": "cd verify-access-node && npm install",
+    "install:verify-access-vue": "cd verify-access-vue && npm install",
+    "install:mock-verify": "cd mock-verify && npm install",
+    "start": "concurrently \"npm run start:verify-access-node\" \"npm run start:verify-access-vue\" \"npm run start:mock-verify\"",
+    "start:verify-access-node": "cd verify-access-node && npm start",
+    "start:verify-access-vue": "cd verify-access-vue && npm run serve",
+    "start:mock-verify": "cd mock-verify && npm start"
   },
   "dependencies": {
     "concurrently": "^6.2.0"
