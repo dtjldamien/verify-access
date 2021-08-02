@@ -21,10 +21,11 @@ Verify Access requires [Node.js](https://nodejs.org/en/) to run.
 
 1. Install required node modules
 ```sh
-yarn add
+npm install
+npm run setup
 ```
 
 2. Run Vue.js and Node.js serversr
 ```
-yarn start
+npm run start
 ```
