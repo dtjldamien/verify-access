@@ -12,8 +12,8 @@ Check out the [Google Slides Deck](https://docs.google.com/presentation/d/1XC10N
 ## Tech Stack
 - Vue.js - Frontend web application
 - Tailwind CSS - UI framework of choice
-- Django - Backend to provide RESTful APIs
-- SQLite - Database shipped with Django
+- Node.js - Backend to provide RESTful APIs and Mock Verify server
+- MongoDB - Document database to store visitor records
 - Azure - Cloud environment
 
 ## Installation
