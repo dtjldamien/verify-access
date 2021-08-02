@@ -24,9 +24,7 @@ Verify Access requires [Node.js](https://nodejs.org/en/) to run.
 yarn add
 ```
 
-2. Run Vue.js
-```sh
-cd verify-access-vue
-yarn
-yarn serve
+2. Run Vue.js and Node.js serversr
+```
+yarn start
 ```
