@@ -66,7 +66,7 @@ export default {
   },
   mounted() {
     axios
-      .get("singpass/personas")
+      .get("api/singpass/personas")
       .then((response) => (this.personas = response.data))
       .catch((error) => {
         this.errorMessage = error.message;

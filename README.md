@@ -25,7 +25,8 @@ npm install
 npm run setup
 ```
 
-2. Run Vue.js and Node.js serversr
+2. Build Vue.js and start Express server
 ```
+npm run build
 npm run start
 ```
