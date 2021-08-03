@@ -13,6 +13,7 @@ const routes = [
   {
     path: "/entry-form",
     name: "EntryForm",
+    props: true,
     component: EntryForm,
   },
   {

@@ -48,7 +48,7 @@ export default {
           vehiclePlate:
             selectedPersona.value.vehicles.length > 0
               ? selectedPersona.value.vehicles[0].vehicleno.value
-              : "",
+              : "-",
         },
       });
     },
