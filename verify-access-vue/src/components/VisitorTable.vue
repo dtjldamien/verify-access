@@ -79,7 +79,7 @@ export default {
   data: function () {
     return {
       buttonText: "Check Out",
-      currColumnSort: "visitorName",
+      currColumnSort: "entryTime",
       isSortAsc: true,
       pageSize: 5,
       currentPage: 1,
@@ -139,7 +139,6 @@ export default {
         );
       });
     },
-
     nextPage() {
       if (this.currentPage * this.pageSize < this.visitorRecords.length)
         this.currentPage++;
