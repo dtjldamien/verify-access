@@ -3,9 +3,9 @@
     class="
       text-base
       font-semibold
-      rounded-3xl
-      px-8
-      py-3
+      rounded-xl
+      px-6
+      py-2
       bg-blue-900
       hover:bg-green-900
       text-white
