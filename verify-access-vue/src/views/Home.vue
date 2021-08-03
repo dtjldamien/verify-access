@@ -4,6 +4,7 @@
       Welcome to {{ facilityName }}
     </h1>
     <vue-qrcode
+      v-if="isQrLoaded"
       class="mt-8 mx-auto"
       :value="qrCodeValue"
       :options="{ width: 400 }"
@@ -27,6 +28,7 @@ export default {
     return {
       facilityName: "Maple Building",
       qrCodeValue: "test",
+      isQrLoaded: false,
       sideBarItems: [
         {
           pageName: "Check In Visitor",
@@ -50,7 +52,10 @@ export default {
           state: this.facilityName.replace(/\s/g, "+"),
         },
       })
-      .then((response) => (this.qrCodeValue = response.data))
+      .then((response) => {
+        this.qrCodeValue = response.data;
+        this.isQrLoaded = true;
+      })
       .catch((error) => {
         this.errorMessage = error.message;
         console.error("There was an error!", error);
