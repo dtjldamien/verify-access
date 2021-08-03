@@ -15,7 +15,6 @@ const VisitorRecordSchema = new Schema({
   },
   vehiclePlate: {
     type: String,
-    required: false,
     default: "",
   },
   visitingUnit: {

@@ -3,6 +3,7 @@ const VisitorRecord = require("../models/VisitorRecord");
 
 const router = Router();
 
+// get visitor records for individuals who are still in the facility
 router.get("", async (req, res) => {
   try {
     const visitorRecords = await VisitorRecord.find({
@@ -18,6 +19,7 @@ router.get("", async (req, res) => {
   }
 });
 
+// get all time visitor records
 router.get("/history", async (req, res) => {
   try {
     const visitorRecords = await VisitorRecord.find();
@@ -31,6 +33,7 @@ router.get("/history", async (req, res) => {
   }
 });
 
+// get all time visitor records for the current day
 router.get("/history/daily", async (req, res) => {
   try {
     var start = new Date();
@@ -52,6 +55,7 @@ router.get("/history/daily", async (req, res) => {
   }
 });
 
+// get all time visitor records for the current week
 router.get("/history/weekly", async (req, res) => {
   try {
     var today = new Date();
@@ -72,6 +76,7 @@ router.get("/history/weekly", async (req, res) => {
   }
 });
 
+// check in visitor
 router.post("", async (req, res) => {
   const newVisitorRecord = new VisitorRecord(req.body);
   try {
@@ -83,6 +88,8 @@ router.post("", async (req, res) => {
   }
 });
 
+
+// check out visitor
 router.patch("/:id", async (req, res) => {
   const { id } = req.params;
   try {

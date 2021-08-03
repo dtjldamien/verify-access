@@ -90,7 +90,6 @@ export default {
     };
   },
   mounted() {
-    console.log(this.records);
     if (this.records.length > this.pageSize) this.hasPagination = true;
     this.visitorRecords = this.records;
     this.sortTable("entryTime");

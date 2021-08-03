@@ -35,11 +35,11 @@ router.get("/callback", function (req, res) {
     }
     //sse.send(data.identity, data.state.value);
   } catch (error) {
-    console.log("VMS - Error:", error);
+    console.log("Callback - Error:", error);
   }
 });
 
-//mock QR Code generation to display on VMS Client
+// Generate QR Code value
 router.get("/generate-qrcode", function (req, res) {
   var qrCodeParams = getQRCodeParams(req.headers.state);
   qrCodeGenerator
@@ -67,12 +67,6 @@ router.get("/generate-qrcode", function (req, res) {
 
 router.get("/qrcode", function (req, res) {
   res.send(qrCodeURL);
-});
-
-//mock function to restart the application to facilitate smoother testing
-router.get("/restart-application", function (req, res) {
-  res.sendStatus(200);
-  sse.send(true, "restartApplication");
 });
 
 var getQRCodeParams = function (state) {

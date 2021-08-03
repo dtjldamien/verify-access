@@ -39,18 +39,6 @@ export default {
   },
   methods: {
     scanQr(selectedPersona) {
-      // axios
-      //   .get("singpass/authorise", {
-      //     body: JSON.stringify({
-      //       selectedUinfin: selectedPersona.selectedUinfin,
-      //     }),
-      //   })
-      //   .then((response) => console.log(response.data))
-      //   .catch((error) => {
-      //     this.errorMessage = error.message;
-      //     console.error("There was an error!", error);
-      //   });
-      console.log(selectedPersona);
       this.$router.push({
         name: "EntryForm",
         params: {

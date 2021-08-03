@@ -13,6 +13,7 @@ app.use(cors());
 app.use(morgan("tiny"));
 app.use(bodyParser.json());
 
+// connect to MongoDB
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
@@ -31,12 +32,8 @@ const path = __dirname + "/views/";
 
 app.use(express.static(path));
 
-console.log(path);
-
 app.get("/", function (req, res) {
   res.sendFile(path + "index.html");
 });
 
-app.listen(PORT, () =>
-  console.log(`Verify Access backend listening at http://localhost:${PORT}`)
-);
+app.listen(PORT, () => console.log("Verify Access server listening!"));
