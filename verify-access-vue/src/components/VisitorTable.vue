@@ -1,5 +1,17 @@
 <template>
-  <div class="visitor-table items-center mx-auto">
+  <div class="visitor-table items-center mx-auto mb-4">
+    <div class="mt-4">
+      <input
+        type="text"
+        id="searchString"
+        name="searchString"
+        v-model="searchString"
+        class="border-solid border-black border-2"
+        placeholder="Search for visitor name"
+        required
+      />
+      <Button text="Search" v-on:click="search"></Button>
+    </div>
     <table class="styled-table table-auto mt-8 mx-auto">
       <thead>
         <tr class="text-center">
@@ -67,13 +79,14 @@ export default {
   data: function () {
     return {
       buttonText: "Check Out",
-      currColumnSort: "visitorRecord",
+      currColumnSort: "visitorName",
       isSortAsc: true,
       pageSize: 5,
       currentPage: 1,
       visitorRecords: [],
       sortedRecords: [],
       hasPagination: false,
+      searchString: "",
     };
   },
   mounted() {
@@ -100,23 +113,15 @@ export default {
       if (this.currColumnSort === column) {
         this.isSortAsc = !this.isSortAsc;
       }
-      if (this.isSortAsc) {
-        this.visitorRecords.sort((a, b) => {
-          if (a[column] < b[column]) return -1;
-          if (a[column] > b[column]) return 1;
-          if (a[column] === undefined) return 1;
-          if (b[column] === undefined) return -1;
-          return a.idx - b.idx;
-        });
-      } else {
-        this.visitorRecords.sort((a, b) => {
-          if (a[column] < b[column]) return 1;
-          if (a[column] > b[column]) return -1;
-          if (a[column] === undefined) return -1;
-          if (b[column] === undefined) return 1;
-          return a.idx - b.idx;
-        });
-      }
+      var modifier = 1;
+      if (!this.isSortAsc) modifier = -1;
+      this.visitorRecords.sort((a, b) => {
+        if (a[column] < b[column]) return modifier * -1;
+        if (a[column] > b[column]) return modifier * 1;
+        if (a[column] === undefined) return modifier * 1;
+        if (b[column] === undefined) return modifier * -1;
+        return a.idx - b.idx;
+      });
       this.currColumnSort = column;
       this.sortedRecords = this.visitorRecords.filter((row, index) => {
         let start = (this.currentPage - 1) * this.pageSize;
@@ -124,6 +129,17 @@ export default {
         if (index >= start && index < end) return true;
       });
     },
+    search() {
+      this.sortedRecords = this.visitorRecords.filter((c) => {
+        if (this.searchString == "") return true;
+        return (
+          c.visitorName
+            .toLowerCase()
+            .indexOf(this.searchString.toLowerCase()) >= 0
+        );
+      });
+    },
+
     nextPage() {
       if (this.currentPage * this.pageSize < this.visitorRecords.length)
         this.currentPage++;
