@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from "vue-router";
 import Home from "../views/Home.vue";
+import EntryForm from "../views/EntryForm.vue";
+import CurrentVisitors from "../views/CurrentVisitors.vue";
+import VisitorHistory from "../views/VisitorHistory.vue";
 
 const routes = [
   {
@@ -11,17 +14,17 @@ const routes = [
     path: "/entry-form",
     name: "EntryForm",
     props: true,
-    component: () => import("../views/EntryForm.vue"),
+    component: EntryForm,
   },
   {
     path: "/current-visitors",
     name: "CurrentVisitors",
-    component: () => import("../views/CurrentVisitors.vue"),
+    component: CurrentVisitors,
   },
   {
     path: "/visitor-history",
     name: "VisitorHistory",
-    component: () => import("../views/VisitorHistory.vue"),
+    component: VisitorHistory,
   },
 ];
 

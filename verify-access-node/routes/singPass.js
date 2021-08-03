@@ -3,6 +3,7 @@ const axios = require("axios");
 
 const router = Router();
 
+// retrieve list of mock person data from MyInfo sandbox
 router.get("/personas", async (req, res) => {
   try {
     axios({

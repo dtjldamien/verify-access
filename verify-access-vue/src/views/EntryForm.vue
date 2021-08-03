@@ -141,7 +141,7 @@ export default {
             entryTime: Date.now(),
           })
           .then(
-            this.$router.push({
+            void this.$router.push({
               path: "/current-visitors",
             })
           )
