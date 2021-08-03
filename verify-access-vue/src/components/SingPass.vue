@@ -1,5 +1,5 @@
 <template>
-  <div class="singpass">
+  <div v-if="isPersonasLoaded" class="singpass">
     <h1 class="text-5xl mb-4">SingPass</h1>
     <select
       class="h-12 border-solid border-2 border-black"
@@ -34,6 +34,7 @@ export default {
       personas: [],
       selectedPersona: "",
       buttonText: "Scan QR",
+      isPersonasLoaded: false,
     };
   },
   methods: {
@@ -67,7 +68,10 @@ export default {
   mounted() {
     axios
       .get("api/singpass/personas")
-      .then((response) => (this.personas = response.data))
+      .then((response) => {
+        this.personas = response.data;
+        this.isPersonasLoaded = true;
+      })
       .catch((error) => {
         this.errorMessage = error.message;
         console.error("There was an error!", error);

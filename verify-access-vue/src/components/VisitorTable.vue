@@ -46,7 +46,7 @@
         </tr>
       </tbody>
     </table>
-    <div class="mt-4 space-x-4">
+    <div v-if="hasPagination" class="mt-4 space-x-4">
       <Button class="w-36" text="Previous" v-on:click="prevPage()"></Button>
       <Button class="w-36" text="Next" v-on:click="nextPage()"></Button>
     </div>
@@ -67,16 +67,18 @@ export default {
   data: function () {
     return {
       buttonText: "Check Out",
-      currColumnSort: "name",
+      currColumnSort: "visitorRecord",
       isSortAsc: true,
       pageSize: 5,
       currentPage: 1,
       visitorRecords: [],
       sortedRecords: [],
+      hasPagination: false,
     };
   },
   mounted() {
     console.log(this.records);
+    if (this.records.length > this.pageSize) this.hasPagination = true;
     this.visitorRecords = this.records;
     this.sortTable("entryTime");
   },
